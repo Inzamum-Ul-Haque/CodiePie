@@ -1,28 +1,39 @@
 @import url(https://fonts.googleapis.com/css?family=Mali:200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic);
 @import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 
-.header-container a {
-  font-family: "Montserrat", sans-serif;
-  font-size: 18px;
+.header-brand .name-logo {
+  text-decoration: none;
+  color: black;
 }
 
-.header-container .name-logo {
+.header-brand .name-logo span {
   font-size: 25px;
   font-family: "Mali", cursive;
-  font-weight: 600;
-  border: none;
+}
+
+.header-brand .name-logo img {
+  width: 40px;
+}
+
+.title-left {
+  color: #26a69a;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  margin: 15px;
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.nav-links a:hover {
+  color: #a0a0a0;
 }
 
 .login-btn {
-  border: 1px solid #2b4eff;
-  color: #2b4eff;
-  background-color: white;
-}
-
-.login-btn:hover {
-  background-color: #2b4eff;
-  color: white;
-  border: 1px solid #2b4eff;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 18px;
 }
 
 .center-nav {
