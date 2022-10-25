@@ -16,11 +16,13 @@
 .login-btn {
   border: 1px solid #2b4eff;
   color: #2b4eff;
+  background-color: white;
 }
 
 .login-btn:hover {
   background-color: #2b4eff;
   color: white;
+  border: 1px solid #2b4eff;
 }
 
 .center-nav {
