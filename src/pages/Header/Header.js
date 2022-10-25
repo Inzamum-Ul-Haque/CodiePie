@@ -1,11 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logos/codiepie-256.png";
+import "./Header.css";
 
 const Header = () => {
+  const activeStyle = {
+    fontWeight: "bold",
+  };
+
   return (
-    <div>
-      <div className="navbar bg-base-100">
+    <div className="header-container">
+      <div className="navbar bg-base-100 shadow-xl shadow-gray-200">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -29,33 +34,56 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link>Item 1</Link>
+                <Link to="/courses">Courses</Link>
               </li>
               <li>
-                <Link>Item 3</Link>
+                <Link to="/faq">FAQ</Link>
+              </li>
+              <li>
+                <Link to="/blog">Blog</Link>
               </li>
             </ul>
           </div>
-          <Link className="btn btn-ghost normal-case text-xl" to="/">
+          <Link className="btn btn-ghost normal-case text-xl name-logo" to="/">
             <img className="w-9" src={logo} alt="" />
-            CodiePie
+            <span className="text-teal-400">Codie</span>Pie
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <li>
-              <Link>Item 1</Link>
+              <NavLink
+                className="center-nav"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                to="/courses"
+              >
+                Courses
+              </NavLink>
             </li>
             <li>
-              <Link>FAQ</Link>
+              <NavLink
+                className="center-nav"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                to="/faq"
+              >
+                FAQ
+              </NavLink>
             </li>
             <li>
-              <Link>Item 3</Link>
+              <NavLink
+                className="center-nav"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                to="/blog"
+              >
+                Blog
+              </NavLink>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <Link className="btn">Get started</Link>
+          <Link to="/signin" className="btn login-btn">
+            Login
+          </Link>
         </div>
       </div>
     </div>
