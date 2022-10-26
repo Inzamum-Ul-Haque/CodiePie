@@ -5,10 +5,13 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
 const SignIn = () => {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, providerLogin } = useContext(AuthContext);
   const navigate = useNavigate();
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
   const handleSignIn = (event) => {
     event.preventDefault();
@@ -18,13 +21,28 @@ const SignIn = () => {
 
     signInUser(email, password)
       .then((result) => {
-        console.log(result.user);
         form.reset();
         navigate("/");
       })
       .catch((error) => {
         console.error(error);
       });
+  };
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        navigate("/");
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const handleGithubSignIn = () => {
+    providerLogin(githubProvider)
+      .then((result) => {
+        navigate("/");
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -78,10 +96,10 @@ const SignIn = () => {
             </p>
           </div>
           <div className="btn-third-party">
-            <Button className="w-100 mb-4">
+            <Button onClick={handleGoogleSignIn} className="w-100 mb-4">
               <FaGoogle /> Continue with Google
             </Button>
-            <Button className="w-100  ">
+            <Button onClick={handleGithubSignIn} className="w-100  ">
               <FaGithub /> Continue with Github
             </Button>
           </div>

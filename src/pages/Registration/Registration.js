@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,6 +9,7 @@ import "./Registration.css";
 const Registration = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [accepted, setAccepted] = useState(false);
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -39,6 +41,10 @@ const Registration = () => {
     updateUserProfile(profile)
       .then(() => {})
       .catch((error) => console.error(error));
+  };
+
+  const handleAccepted = (event) => {
+    setAccepted(event.target.checked);
   };
 
   return (
@@ -97,11 +103,17 @@ const Registration = () => {
           </Form.Group>
           <Form.Group className="mb-4 d-flex justify-content-between">
             <Form.Check
+              onClick={handleAccepted}
               type="checkbox"
               label="I agree to the Terms and Conditions"
             />
           </Form.Group>
-          <Button className="w-100 signup-btn" variant="primary" type="submit">
+          <Button
+            disabled={!accepted}
+            className="w-100 signup-btn"
+            variant="primary"
+            type="submit"
+          >
             Sign Up
           </Button>
           <p className="text-center mt-3">
