@@ -1,20 +1,48 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { FaArrowRight, FaBook, FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import "./CourseCard.css";
 
-const CourseCard = () => {
+const CourseCard = ({ course }) => {
+  const {
+    image_url,
+    course_title,
+    course_teacher,
+    lesson,
+    rating,
+    rating_count,
+  } = course;
   return (
-    <div>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </div>
+    <Card className="card-container shadow-lg bg-body rounded">
+      <Card.Img className="course-thumbnail" variant="top" src={image_url} />
+      <Card.Body className="p-4">
+        <div className="d-flex justify-content-between">
+          <div>
+            <p className="text-muted">
+              <FaBook /> {lesson} Lesson
+            </p>
+          </div>
+          <div>
+            <p className="text-muted">
+              <FaStar className="text-warning" /> {rating} ({rating_count})
+            </p>
+          </div>
+        </div>
+        <Card.Title className="mb-4 course-title">{course_title}</Card.Title>
+        <div className="d-flex align-items-center course-teacher-info">
+          <img src={course_teacher.image} alt="" />
+          <p className="ms-3 mb-0">{course_teacher.name}</p>
+        </div>
+      </Card.Body>
+      <Card.Footer className="p-4">
+        <div className="d-flex justify-content-end">
+          <Link>
+            Know details <FaArrowRight />
+          </Link>
+        </div>
+      </Card.Footer>
+    </Card>
   );
 };
 

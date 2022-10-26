@@ -5,6 +5,7 @@
   background-color: #f3f4f8;
   font-family: "Montserrat", sans-serif;
   border-radius: 5px;
+  height: max-content;
 }
 
 .categories-link li {
