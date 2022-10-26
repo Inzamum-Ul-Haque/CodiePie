@@ -1,6 +1,12 @@
 import React from "react";
 import { useContext } from "react";
-import { Button, Image, NavDropdown } from "react-bootstrap";
+import {
+  Button,
+  Image,
+  NavDropdown,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -11,8 +17,16 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import "./Header.css";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
-  console.log(user);
+  const { user, signOutUser } = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {})
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   const activeStyle = {
     fontWeight: "bold",
   };
@@ -29,7 +43,8 @@ const Header = () => {
             <Link className="name-logo" to="/">
               <img src={logo} alt="" />
               <span>
-                <span className="title-left">Codie</span>Pie
+                <span className="title-left">Codie</span>
+                Pie
               </span>
             </Link>
           </Navbar.Brand>
@@ -64,13 +79,20 @@ const Header = () => {
               className="dropdown-nav-links"
               title={
                 user.photoURL ? (
-                  <Image
-                    data-bs-toggle="tooltip"
-                    data-bs-title={user.displayName}
-                    roundedCircle
-                    src={user.photoURL}
-                    style={{ width: "30px", height: "30px" }}
-                  />
+                  <OverlayTrigger
+                    placement="top"
+                    overlay={
+                      <Tooltip id="button-tooltip-2">
+                        {user.displayName}
+                      </Tooltip>
+                    }
+                  >
+                    <Image
+                      roundedCircle
+                      src={user.photoURL}
+                      style={{ width: "30px", height: "30px" }}
+                    />
+                  </OverlayTrigger>
                 ) : (
                   <FaUserCircle style={{ width: "30px", height: "30px" }} />
                 )
@@ -80,7 +102,9 @@ const Header = () => {
               <NavDropdown.Item>Profile</NavDropdown.Item>
               <NavDropdown.Item>Settings</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item>Logout</NavDropdown.Item>
+              <NavDropdown.Item onClick={handleSignOut}>
+                Logout
+              </NavDropdown.Item>
             </NavDropdown>
           ) : (
             <Link to="/signin">

@@ -6,7 +6,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import "./Registration.css";
 
 const Registration = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSignUp = (event) => {
@@ -22,11 +22,23 @@ const Registration = () => {
       .then((result) => {
         console.log(result.user);
         form.reset();
+        updateUserData(fullName, photoURL);
         navigate("/");
       })
       .catch((error) => {
         console.error(error);
       });
+  };
+
+  const updateUserData = (fullName, photoURL) => {
+    const profile = {
+      displayName: fullName,
+      photoURL: photoURL,
+    };
+
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => console.error(error));
   };
 
   return (
