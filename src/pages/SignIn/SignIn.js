@@ -2,12 +2,13 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 import "./SignIn.css";
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const SignIn = () => {
   const { signInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSignIn = (event) => {
     event.preventDefault();
@@ -18,6 +19,8 @@ const SignIn = () => {
     signInUser(email, password)
       .then((result) => {
         console.log(result.user);
+        form.reset();
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);

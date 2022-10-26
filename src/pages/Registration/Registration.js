@@ -1,17 +1,32 @@
 import React from "react";
 import { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import "./Registration.css";
 
 const Registration = () => {
   const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
     const fullName = form.fullName.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
+
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        form.reset();
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -24,7 +39,7 @@ const Registration = () => {
           onSubmit={handleSignUp}
           className="bg-white border border-secondary"
         >
-          <Form.Group className="mb-4" controlId="formBasicEmail">
+          <Form.Group className="mb-4">
             <Form.Control
               className="form-control form-control-lg"
               type="text"
@@ -33,7 +48,7 @@ const Registration = () => {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-4" controlId="formBasicEmail">
+          <Form.Group className="mb-4">
             <Form.Control
               className="form-control form-control-lg"
               type="text"
@@ -41,7 +56,7 @@ const Registration = () => {
               placeholder="photo URL"
             />
           </Form.Group>
-          <Form.Group className="mb-4" controlId="formBasicEmail">
+          <Form.Group className="mb-4">
             <Form.Control
               className="form-control form-control-lg"
               type="email"
@@ -50,7 +65,7 @@ const Registration = () => {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-4" controlId="formBasicEmail">
+          <Form.Group className="mb-4">
             <Form.Control
               className="form-control form-control-lg"
               type="password"
@@ -59,7 +74,7 @@ const Registration = () => {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-4" controlId="formBasicEmail">
+          <Form.Group className="mb-4">
             <Form.Control
               className="form-control form-control-lg"
               type="password"
@@ -68,10 +83,7 @@ const Registration = () => {
               required
             />
           </Form.Group>
-          <Form.Group
-            className="mb-4 d-flex justify-content-between"
-            controlId="formBasicCheckbox"
-          >
+          <Form.Group className="mb-4 d-flex justify-content-between">
             <Form.Check
               type="checkbox"
               label="I agree to the Terms and Conditions"

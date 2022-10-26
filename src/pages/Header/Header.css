@@ -31,6 +31,11 @@
   color: #a0a0a0;
 }
 
+.dropdown-nav-links {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+}
+
 .login-btn {
   font-family: "Montserrat", sans-serif !important;
   font-size: 18px;

@@ -1,13 +1,18 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { useContext } from "react";
+import { Button, Image, NavDropdown } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { FaUserCircle } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logos/codiepie-256.png";
+import { AuthContext } from "../../contexts/AuthProvider";
 import "./Header.css";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
   const activeStyle = {
     fontWeight: "bold",
   };
@@ -54,9 +59,34 @@ const Header = () => {
               </NavLink>
             </Nav>
           </Navbar.Collapse>
-          <Link to="/signin">
-            <Button variant="outline-primary login-btn">Login</Button>
-          </Link>
+          {user && user.uid ? (
+            <NavDropdown
+              className="dropdown-nav-links"
+              title={
+                user.photoURL ? (
+                  <Image
+                    data-bs-toggle="tooltip"
+                    data-bs-title={user.displayName}
+                    roundedCircle
+                    src={user.photoURL}
+                    style={{ width: "30px", height: "30px" }}
+                  />
+                ) : (
+                  <FaUserCircle style={{ width: "30px", height: "30px" }} />
+                )
+              }
+              id="navbarScrollingDropdown"
+            >
+              <NavDropdown.Item>Profile</NavDropdown.Item>
+              <NavDropdown.Item>Settings</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item>Logout</NavDropdown.Item>
+            </NavDropdown>
+          ) : (
+            <Link to="/signin">
+              <Button variant="outline-primary login-btn">Login</Button>
+            </Link>
+          )}
         </Container>
       </Navbar>
     </div>
