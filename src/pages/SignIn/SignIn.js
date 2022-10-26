@@ -3,19 +3,42 @@ import { Button, Form } from "react-bootstrap";
 import "./SignIn.css";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const SignIn = () => {
+  const { signInUser } = useContext(AuthContext);
+
+  const handleSignIn = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <div className="signin-container">
       <div>
         <h2 className="text-center">Sign In to get access</h2>
       </div>
       <div className="form-container d-flex justify-content-center">
-        <Form className="bg-white border border-secondary">
+        <Form
+          onSubmit={handleSignIn}
+          className="bg-white border border-secondary"
+        >
           <Form.Group className="mb-4" controlId="formBasicEmail">
             <Form.Control
               className="form-control form-control-lg"
               type="email"
+              name="email"
               placeholder="Username or Email"
             />
           </Form.Group>
@@ -24,6 +47,7 @@ const SignIn = () => {
             <Form.Control
               className="form-control form-control-lg"
               type="password"
+              name="password"
               placeholder="Password"
             />
           </Form.Group>

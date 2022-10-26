@@ -59,6 +59,7 @@ input[type="text"] {
 
 .form-text {
   color: #2b4eff;
+  text-decoration: none;
 }
 
 .btn-third-party button {
