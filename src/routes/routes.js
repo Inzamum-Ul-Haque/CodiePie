@@ -19,6 +19,9 @@ const routes = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses />,
+        loader: () => {
+          return fetch("http://localhost:5000/categories");
+        },
       },
       {
         path: "/faq",

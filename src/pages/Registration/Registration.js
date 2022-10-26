@@ -10,6 +10,7 @@ const Registration = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const [accepted, setAccepted] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -19,6 +20,13 @@ const Registration = () => {
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
+
+    if (password !== confirmPassword) {
+      setError("Password doesn't match!");
+      return;
+    } else {
+      setError("");
+    }
 
     createUser(email, password)
       .then((result) => {
@@ -100,6 +108,7 @@ const Registration = () => {
               placeholder="Re-type password"
               required
             />
+            <p className="text-danger">{error}</p>
           </Form.Group>
           <Form.Group className="mb-4 d-flex justify-content-between">
             <Form.Check
