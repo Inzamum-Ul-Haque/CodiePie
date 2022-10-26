@@ -11,17 +11,20 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { FaUserCircle } from "react-icons/fa";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logos/codiepie-256.png";
 import { AuthContext } from "../../contexts/AuthProvider";
 import "./Header.css";
 
 const Header = () => {
   const { user, signOutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSignOut = () => {
     signOutUser()
-      .then(() => {})
+      .then(() => {
+        navigate("/signin");
+      })
       .catch((error) => {
         console.error(error);
       });
