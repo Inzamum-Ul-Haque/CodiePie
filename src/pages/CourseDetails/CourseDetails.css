@@ -1,0 +1,18 @@
+.teacher-thumbnail {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.course-image {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.course-image img {
+  width: 70%;
+}
+
+.course-details-container {
+  font-family: "Montserrat", sans-serif;
+}
