@@ -6,6 +6,7 @@ import "./CourseCard.css";
 
 const CourseCard = ({ course }) => {
   const {
+    id,
     image_url,
     course_title,
     course_teacher,
@@ -37,7 +38,7 @@ const CourseCard = ({ course }) => {
       </Card.Body>
       <Card.Footer className="p-4">
         <div className="d-flex justify-content-end">
-          <Link>
+          <Link to={`/course_details/${id}`}>
             Know details <FaArrowRight />
           </Link>
         </div>

@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import CourseCard from "../CourseCard/CourseCard";
+import LeftCategoryBar from "../LeftCategoryBar/LeftCategoryBar";
 import "./Courses.css";
 
 const Courses = () => {
@@ -21,18 +22,7 @@ const Courses = () => {
       <Container>
         <Row className="g-5">
           <Col className="categories-link-container p-3" lg={3} sm={2}>
-            <div>
-              <h4 className="text-center fw-bold">Categories</h4>
-            </div>
-            <ul className="categories-link mt-3">
-              {categories.map((category) => (
-                <li className="pb-4" key={category.category_id}>
-                  <Link to={`/category/${category.category_id}`}>
-                    {category.category_name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <LeftCategoryBar categories={categories} />
           </Col>
           <Col lg={9} sm={10}>
             <Row lg={2} sm={1}>

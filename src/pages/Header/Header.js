@@ -56,7 +56,7 @@ const Header = () => {
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 to="/courses"
               >
-                Courses
+                All Courses
               </NavLink>
               <NavLink
                 className="center-nav"
