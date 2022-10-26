@@ -33,6 +33,12 @@
   font-size: 14px;
 }
 
+.toggle-btn {
+  font-size: 30px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
 .login-btn {
   font-family: "Montserrat", sans-serif !important;
   font-size: 18px;

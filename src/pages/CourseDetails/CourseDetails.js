@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
+import { FcDownload } from "react-icons/fc";
 import LeftCategoryBar from "../LeftCategoryBar/LeftCategoryBar";
 import "./CourseDetails.css";
 
@@ -37,6 +38,9 @@ const CourseDetails = () => {
           <Col lg={9} className="course-details-container pb-5">
             <div>
               <h1>{course_title}</h1>
+              <p className="download-btn">
+                Download Course Outline <FcDownload />
+              </p>
             </div>
             <div className="d-flex justify-content-between align-items-center">
               <div className="d-flex align-items-center">
