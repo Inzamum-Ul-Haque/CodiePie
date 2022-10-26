@@ -27,7 +27,9 @@ const Courses = () => {
             <ul className="categories-link mt-3">
               {categories.map((category) => (
                 <li className="pb-4" key={category.category_id}>
-                  <Link>{category.category_name}</Link>
+                  <Link to={`/category/${category.category_id}`}>
+                    {category.category_name}
+                  </Link>
                 </li>
               ))}
             </ul>
