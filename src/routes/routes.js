@@ -25,27 +25,35 @@ const routes = createBrowserRouter([
         path: "/courses",
         element: <Courses />,
         loader: () => {
-          return fetch("http://localhost:5000/categories");
+          return fetch(
+            "https://education-platform-server-iota.vercel.app/categories"
+          );
         },
       },
       {
         path: "/category/:id",
         loader: ({ params }) => {
-          return fetch(`http://localhost:5000/category/${params.id}`);
+          return fetch(
+            `https://education-platform-server-iota.vercel.app/category/${params.id}`
+          );
         },
         element: <Category />,
       },
       {
         path: "/course_details/:id",
         loader: ({ params }) => {
-          return fetch(`http://localhost:5000/course/${params.id}`);
+          return fetch(
+            `https://education-platform-server-iota.vercel.app/course/${params.id}`
+          );
         },
         element: <CourseDetails />,
       },
       {
         path: "/course_checkout/:id",
         loader: ({ params }) => {
-          return fetch(`http://localhost:5000/course/${params.id}`);
+          return fetch(
+            `https://education-platform-server-iota.vercel.app/course/${params.id}`
+          );
         },
         element: (
           <PrivateRoute>

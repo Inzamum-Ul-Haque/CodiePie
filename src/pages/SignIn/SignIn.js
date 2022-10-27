@@ -6,9 +6,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+import { useState } from "react";
 
 const SignIn = () => {
   const { signInUser, providerLogin } = useContext(AuthContext);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const googleProvider = new GoogleAuthProvider();
@@ -28,6 +30,7 @@ const SignIn = () => {
       })
       .catch((error) => {
         console.error(error);
+        setError(error.message);
       });
   };
 
@@ -36,7 +39,10 @@ const SignIn = () => {
       .then((result) => {
         navigate(from, { replace: true });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
   };
 
   const handleGithubSignIn = () => {
@@ -44,7 +50,10 @@ const SignIn = () => {
       .then((result) => {
         navigate(from, { replace: true });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
   };
 
   return (
@@ -74,6 +83,7 @@ const SignIn = () => {
               placeholder="Password"
             />
           </Form.Group>
+          <p className="text-danger">{error}</p>
           <Form.Group
             className="mb-4 d-flex justify-content-between"
             controlId="formBasicCheckbox"

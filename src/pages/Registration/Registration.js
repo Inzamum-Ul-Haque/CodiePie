@@ -37,6 +37,7 @@ const Registration = () => {
       })
       .catch((error) => {
         console.error(error);
+        setError(error.message);
       });
   };
 
@@ -48,7 +49,10 @@ const Registration = () => {
 
     updateUserProfile(profile)
       .then(() => {})
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
   };
 
   const handleAccepted = (event) => {

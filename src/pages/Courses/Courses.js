@@ -12,7 +12,7 @@ const Courses = () => {
   const [courseData, setCourseData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allCourses")
+    fetch("https://education-platform-server-iota.vercel.app/allCourses")
       .then((res) => res.json())
       .then((data) => setCourseData(data));
   }, []);
@@ -20,14 +20,14 @@ const Courses = () => {
   return (
     <div>
       <Container>
-        <Row className="g-5">
+        <Row className="g-md-5">
           <Col className="categories-link-container p-3" lg={3}>
             <LeftCategoryBar categories={categories} />
           </Col>
           <Col lg={9}>
-            <Row lg={2} xs={12} sm={12}>
+            <Row>
               {courseData.map((course) => (
-                <Col className="pt-0 pb-5" key={course.id}>
+                <Col lg={6} sm={12} className="pt-0 pb-5" key={course.id}>
                   <CourseCard course={course} />
                 </Col>
               ))}
