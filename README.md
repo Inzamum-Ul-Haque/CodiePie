@@ -1,3 +1,21 @@
+# Project name: CodiePie
+
+## About the project
+
+CodiePie is an educational platform for every web developer where they can buy courses regarding web development. Here they will find most of the courses related to web development.
+
+## Features
+
+Here are some features of this project:
+
+- Responsive navbar where they can move to the courses section, faq and blog section.
+- In the courses section, there is a sidebar where user can move to each related categories and can find related courses of that category.
+- All courses section contains all of the courses
+- By clicking the course card, it will take you to the course details page where you can see the course curriculam and download the course outline
+- There is premium access button in there which only the logged in user can access.
+- User can manually sign in or use Google or Github to login to access the checkout of the course
+- User can register to create ther account
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

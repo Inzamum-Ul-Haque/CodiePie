@@ -1,13 +1,21 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import { useLoaderData } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import "./Checkout.css";
 
 const Checkout = () => {
   const { course_title } = useLoaderData();
+  const navigate = useNavigate();
 
   const handleCheckout = (event) => {
     event.preventDefault();
+    const form = event.target;
+    toast.success(
+      `You have been successfully enrolled in the course ${course_title}!`
+    );
+    form.reset();
+    navigate("/courses");
   };
 
   return (
