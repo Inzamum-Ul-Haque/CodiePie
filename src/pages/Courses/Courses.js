@@ -21,11 +21,11 @@ const Courses = () => {
     <div>
       <Container>
         <Row className="g-5">
-          <Col className="categories-link-container p-3" lg={3} sm={2}>
+          <Col className="categories-link-container p-3" lg={3}>
             <LeftCategoryBar categories={categories} />
           </Col>
-          <Col lg={9} sm={10}>
-            <Row lg={2} sm={1}>
+          <Col lg={9}>
+            <Row lg={2} xs={12} sm={12}>
               {courseData.map((course) => (
                 <Col className="pt-0 pb-5" key={course.id}>
                   <CourseCard course={course} />
