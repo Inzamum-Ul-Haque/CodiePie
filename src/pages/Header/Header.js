@@ -11,7 +11,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { FaUserCircle } from "react-icons/fa";
-import { BsToggleOn, BsToggleOff } from "react-icons/bs";
+// import { BsToggleOn, BsToggleOff } from "react-icons/bs";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logos/codiepie-256.png";
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -19,7 +19,7 @@ import "./Header.css";
 
 const Header = () => {
   const { user, signOutUser } = useContext(AuthContext);
-  const [toggle, setToggle] = useState(false);
+  // const [toggle, setToggle] = useState(false);
   const navigate = useNavigate();
 
   const handleSignOut = () => {
@@ -36,9 +36,9 @@ const Header = () => {
     fontWeight: "bold",
   };
 
-  const handleThemeToggle = () => {
-    setToggle(!toggle);
-  };
+  // const handleThemeToggle = () => {
+  //   setToggle(!toggle);
+  // };
 
   return (
     <div>
@@ -83,11 +83,7 @@ const Header = () => {
               </NavLink>
             </Nav>
           </Navbar.Collapse>
-          {toggle ? (
-            <BsToggleOn className="toggle-btn" onClick={handleThemeToggle} />
-          ) : (
-            <BsToggleOff className="toggle-btn" onClick={handleThemeToggle} />
-          )}
+
           {user && user.uid ? (
             <NavDropdown
               className="dropdown-nav-links"

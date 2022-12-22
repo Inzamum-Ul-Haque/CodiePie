@@ -1,6 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Mali:200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic);
 @import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 
+.home-container {
+  position: relative;
+}
+
 .col {
   padding-top: 80px;
 }
@@ -28,6 +32,29 @@
 .yellow-shape {
   position: relative;
   z-index: 1;
+}
+
+.hero-shape img {
+  position: absolute;
+  animation-duration: 6s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: none;
+  animation-play-state: running;
+  animation-name: hero-circle-1;
+  left: 3%;
+  top: 5%;
+}
+
+@keyframes hero-circle-1 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
 }
 
 @keyframes section-animation {
@@ -65,6 +92,29 @@
   animation-name: section-animation;
 }
 
-.img-container img {
+.img-container {
+  position: relative;
+}
+
+.img-container .home-img {
   width: 80%;
+}
+
+.img-container .hero-1-dot {
+  width: 70px;
+  height: 110px;
+  position: absolute;
+  z-index: -1;
+  bottom: -25px;
+  left: 45px;
+  animation: hero-dot-1 5s linear 0s infinite alternate none;
+}
+
+@keyframes hero-dot-1 {
+  0% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }

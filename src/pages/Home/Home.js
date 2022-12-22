@@ -1,11 +1,28 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./Home.css";
-import homeImg from "../../assets/images/home-img.svg";
+// import homeImg from "../../assets/images/home-img.svg";
+import Lottie from "react-lottie";
+import animationData from "../../assets/lottie/105040-course.json";
 
 const Home = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   return (
-    <div>
+    <div className="home-container">
+      <div className="hero-shape">
+        <img
+          src="https://react-educal.netlify.app/assets/img/shape/hero/hero-1-circle.png"
+          alt=""
+        />
+      </div>
       <Container>
         <Row>
           <Col className="col" sm={12} lg={6}>
@@ -30,7 +47,12 @@ const Home = () => {
           </Col>
           <Col sm={12} lg={6}>
             <div className="img-container d-flex justify-content-center">
-              <img className="" src={homeImg} alt="" />
+              <img
+                className="hero-1-dot"
+                src="https://react-educal.netlify.app/assets/img/shape/hero/hero-1-dot.png"
+                alt=""
+              />
+              <Lottie options={defaultOptions} className="home-img" />
             </div>
           </Col>
         </Row>
